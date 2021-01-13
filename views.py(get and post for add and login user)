@@ -19,9 +19,9 @@ def login(request):
             userdetails=user.objects.get(username=request.POST['user'],password=request.POST['[password'])
             print("username=",userdetails)
             request.session['password']=userdetails.password
-            return render(request,'index.html')
+            return render(request,'index.html')  # index templates have only href link of login and ragistration 
     else:
-        return render(request,'login.html')
+        return render(request,'login.html') 
 
 
     
