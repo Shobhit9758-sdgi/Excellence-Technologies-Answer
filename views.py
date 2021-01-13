@@ -1,0 +1,27 @@
+from django.shortcuts import render
+from mysite.models import user
+from django.contrib import messages
+
+def index(request):
+    return render(request,'index.html')
+def userreg(request):
+    if request.method=='Post':
+        username=request.POST['username']
+        password=request.POST['password']
+        user(username=username,password=password).save()
+        messages.success("the user" + request.POST['username'] + "is sucessfull" )
+        return render(request,"Ragistation.html")
+    else:
+        return render(request,"Ragistation.html")
+
+def login(request):
+    if(request.method)=="POST":
+            userdetails=user.objects.get(username=request.POST['user'],password=request.POST['[password'])
+            print("username=",userdetails)
+            request.session['password']=userdetails.password
+            return render(request,'index.html')
+    else:
+        return render(request,'login.html')
+
+
+    
