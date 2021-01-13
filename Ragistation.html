@@ -1,0 +1,26 @@
+<h1>New user registration Form</h1>
+<hr/>
+<form>
+    {% csrf_token %}
+    <table border="1">
+        <tr>
+            <td>username</td>
+            <td><input type="text" name="username" placeholder="enter user name" required ></td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td><input type="password" name="password" placeholder="enter your password" required ></td>
+        </tr>
+        <tr>
+            <td><button type="submit">Ragistation</button></td>
+        </tr>
+
+    </table>
+    {% if messages %}
+    {% for msg in messages %}
+    <b>{{msg}}</b>
+    {% endfor%}
+    {% endif %}
+    <em>if you already a member <a href="">Signin</a></em>
+</form>
+
